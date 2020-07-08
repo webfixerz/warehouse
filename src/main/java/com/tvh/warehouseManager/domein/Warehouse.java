@@ -39,7 +39,9 @@ public class Warehouse {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if(name != null && name.trim().length() > 3) {
+            this.name = name;
+        }
     }
 
     public int getCapacityUsed() {
@@ -51,7 +53,9 @@ public class Warehouse {
     }
     
     public void setMaximumCapacity(int maximumCapacity) {
-        this.maximumCapacity = maximumCapacity;
+        if(maximumCapacity > this.capacityUsed) {
+            this.maximumCapacity = maximumCapacity;
+        }
     }
 
     public List<Product> getProducts() {
@@ -63,8 +67,10 @@ public class Warehouse {
     }
     
     public void addProduct(Product p) {
-        this.products.add(p);
-        this.capacityUsed++;
+        if(this.maximumCapacity < this.capacityUsed) {
+            this.products.add(p);
+            this.capacityUsed++;
+        }
     }
     
     public Product deleteProduct(int id) {

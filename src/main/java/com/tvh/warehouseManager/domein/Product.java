@@ -16,8 +16,8 @@ public class Product {
     public Product() {}
     
     public Product(int id, String name) {
-        setId(id);
-        setName(name);
+        this.id = id;
+        this.name = name;
     }
     
     public int getId() {
@@ -33,7 +33,9 @@ public class Product {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if(name != null && name.trim().length() > 3) {
+            this.name = name;
+        }
     }
     
     
