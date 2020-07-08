@@ -1,6 +1,8 @@
 # Warehouse Manager
 
-Warehouse Manager is a REST-backend service made in Spring with Spring Boot.
+Warehouse Manager is a REST-backend service made in Spring with Spring Boot. 
+It enables you to create, read, update and delete warehouses and product. 
+You can also transfer products from one warehouse to another one if it has space left.
 
 ## Installation
 
