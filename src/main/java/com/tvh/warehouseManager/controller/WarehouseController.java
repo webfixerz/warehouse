@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.tvh.oefening.controller;
+package com.tvh.warehouseManager.controller;
 
-import com.tvh.oefening.domein.Product;
-import com.tvh.oefening.domein.Warehouse;
-import com.tvh.oefening.repositories.WarehouseRepository;
+import com.tvh.warehouseManager.domein.Warehouse;
+import com.tvh.warehouseManager.repositories.WarehouseRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**

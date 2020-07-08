@@ -1,10 +1,10 @@
-package com.tvh.oefening;
+package com.tvh.warehouseManager;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OefeningApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {

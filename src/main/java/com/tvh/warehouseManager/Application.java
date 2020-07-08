@@ -1,13 +1,13 @@
-package com.tvh.oefening;
+package com.tvh.warehouseManager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OefeningApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OefeningApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

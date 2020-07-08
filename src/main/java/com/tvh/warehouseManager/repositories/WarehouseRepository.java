@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.tvh.oefening.repositories;
+package com.tvh.warehouseManager.repositories;
 
-import com.tvh.oefening.domein.Product;
-import com.tvh.oefening.domein.Warehouse;
+import com.tvh.warehouseManager.domein.Product;
+import com.tvh.warehouseManager.domein.Warehouse;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Component;
