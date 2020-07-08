@@ -9,13 +9,19 @@ import com.tvh.warehouseManager.domein.Product;
 import com.tvh.warehouseManager.domein.Warehouse;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
+
+
+public interface WarehouseRepository  extends CrudRepository<Warehouse, Integer> {
+    
+}
 
 /**
  *
  * @author simon
  */
-@Component
+/*@Component
 public class WarehouseRepository {
     
     public List<Warehouse> warehouses;
@@ -117,3 +123,4 @@ public class WarehouseRepository {
         return this.getWarehouseById(warehouseId).getProducts();
     }
 }
+*/

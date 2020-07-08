@@ -33,33 +33,38 @@ public class WarehouseController {
         
     @PostMapping()
     public Warehouse createWarehouse(@RequestBody Warehouse warehouse) {
-        this.warehouseRepository.createWarehouse(warehouse);
+        this.warehouseRepository.save(warehouse);
+        //this.warehouseRepository.createWarehouse(warehouse);
         return warehouse;
     }
     
     @GetMapping()
-    public List<Warehouse> readWarehouses() {
-        return this.warehouseRepository.getWarehouses();
+    public Iterable<Warehouse> readWarehouses() {
+        return this.warehouseRepository.findAll();
     }
     
-    @GetMapping(value = "{id}")
-    public Warehouse readWarehouse(@PathVariable int id) {
-        return this.warehouseRepository.getWarehouseById(id);
+    @GetMapping(value = "{warehouseId}")
+    public Warehouse readWarehouse(@PathVariable int warehouseId) {
+        System.out.println(warehouseId);
+        return this.warehouseRepository.findById(warehouseId).get();
     }
     
     @PutMapping(value = "{warehouseId}")
-    public Warehouse updateWarehouse(@PathVariable int warehouseId, @RequestBody Warehouse warehouse) {
-        this.warehouseRepository.updateWarehouse(warehouseId, warehouse);
-        return this.warehouseRepository.getWarehouseById(warehouseId);
+    public Warehouse updateWarehouse(@PathVariable int warehouseId, @RequestBody Warehouse newWarehouse) {
+        return this.warehouseRepository.findById(warehouseId).map(w -> {
+            w.setName(newWarehouse.getName());
+            w.setMaximumCapacity(newWarehouse.getMaximumCapacity());
+            return this.warehouseRepository.save(w);
+        }).get();
     }
     
     @DeleteMapping(value = "{warehouseId}")
     public void deleteWarehouse(@PathVariable int warehouseId) {
-        this.warehouseRepository.deleteWarehouse(warehouseId);
+        this.warehouseRepository.deleteById(warehouseId);
     }
     
-    @PutMapping(value = "transfer/{idFrom}/{idTo}/{productID}")
+    /*@PutMapping(value = "transfer/{idFrom}/{idTo}/{productID}")
     public void transferProduct(@PathVariable int idFrom, @PathVariable int idTo, @PathVariable int productID) {
         this.warehouseRepository.transferProduct(idFrom, idTo, productID);
-    }
+    }*/
 }

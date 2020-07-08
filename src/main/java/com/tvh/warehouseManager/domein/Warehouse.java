@@ -5,19 +5,37 @@
  */
 package com.tvh.warehouseManager.domein;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
  * @author simon
  */
+@Entity
+@Table(name = "warehouses")
 public class Warehouse {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private int maximumCapacity;
     private int capacityUsed;
+    @OneToMany(mappedBy = "warehouse")
+    @JsonManagedReference
     private List<Product> products;
+    
+    public Warehouse() {}
 
     public Warehouse(int maximumCapacity, String name) {
         this.maximumCapacity = maximumCapacity;
@@ -74,7 +92,7 @@ public class Warehouse {
     }
     
     public Product deleteProduct(int id) {
-        Product product = this.products.stream().filter(p -> p.getId() == id).findFirst().orElseThrow();
+        Product product = this.products.stream().filter(p -> p.getId() == id).findFirst().get();
         this.products.remove(product);
         this.capacityUsed--;
         return product;
