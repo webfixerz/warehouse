@@ -6,6 +6,7 @@
 package com.tvh.warehouseManager.controller;
 
 import com.tvh.warehouseManager.domein.Product;
+import com.tvh.warehouseManager.domein.Warehouse;
 import com.tvh.warehouseManager.repositories.ProductRepository;
 import com.tvh.warehouseManager.repositories.WarehouseRepository;
 import java.util.List;
@@ -19,6 +20,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import service.ProductService;
+import service.ProductServiceImpl;
+import service.WarehouseService;
+import service.WarehouseServiceImpl;
 
 /**
  *
@@ -27,6 +32,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("warehouses/{warehouseId}/products")
 public class ProductController {
+
+    /*@Autowired
+    public ProductService productservice;
+
+    @Autowired
+    public WarehouseService warehouseservice;*/
     
     @Autowired
     public ProductRepository productRepository;
@@ -34,12 +45,20 @@ public class ProductController {
     @Autowired
     public WarehouseRepository warehouseRepository;
     
+    public ProductController() {
+        
+    }
+    
     @PostMapping
     public void createProduct(@PathVariable("warehouseId") int warehouseId, @RequestBody Product product) {
-        this.warehouseRepository.findById(warehouseId).map(w -> {
-            product.setWarehouse(w);
-            return this.productRepository.save(product);
-        });
+        Warehouse warehouse = this.warehouseRepository.findById(warehouseId).orElseThrow(NullPointerException::new);
+        warehouse.addProduct(product);
+        product.setWarehouse(warehouse);
+        System.out.println(warehouse.calculateCapacityLeft());
+        System.out.println(warehouse.getCapacityUsed());
+        this.productRepository.save(product);
+        this.warehouseRepository.save(warehouse);
+        //this.productRepository.save(product, this.warehouseRepository.findById(warehouseId).get());
     }
     
     @GetMapping()
@@ -54,6 +73,7 @@ public class ProductController {
     
     @PutMapping(value = "/{productId}")
     public Product updateProduct(@PathVariable("productId") int productId, @RequestBody Product product) {
+        //return this.productRepository.updateProduct(productId, product);
         return this.productRepository.findById(productId).map(p -> {
             p.setName(product.getName());
             return this.productRepository.save(p);

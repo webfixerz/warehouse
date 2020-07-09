@@ -32,7 +32,7 @@ public class Warehouse {
     private int maximumCapacity;
     private int capacityUsed;
     @OneToMany(mappedBy = "warehouse")
-    @JsonManagedReference
+    //@JsonManagedReference
     private List<Product> products;
     
     public Warehouse() {}
@@ -73,6 +73,8 @@ public class Warehouse {
     public void setMaximumCapacity(int maximumCapacity) {
         if(maximumCapacity > this.capacityUsed) {
             this.maximumCapacity = maximumCapacity;
+        } else {
+            
         }
     }
 
@@ -85,7 +87,7 @@ public class Warehouse {
     }
     
     public void addProduct(Product p) {
-        if(this.maximumCapacity < this.capacityUsed) {
+        if(this.maximumCapacity > this.capacityUsed) {
             this.products.add(p);
             this.capacityUsed++;
         }

@@ -13,7 +13,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
 
-public interface WarehouseRepository  extends CrudRepository<Warehouse, Integer> {
+public interface WarehouseRepository extends CrudRepository<Warehouse, Integer> {
     
 }
 
