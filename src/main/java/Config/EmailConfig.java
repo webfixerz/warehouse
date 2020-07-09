@@ -6,13 +6,12 @@
 package Config;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  *
  * @author simon
  */
-//@Component
 public class EmailConfig {
     @Value("${spring.mail.host}")
     private String host;

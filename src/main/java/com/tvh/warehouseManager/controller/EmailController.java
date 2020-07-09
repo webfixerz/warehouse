@@ -5,6 +5,7 @@
  */
 package com.tvh.warehouseManager.controller;
 
+import Config.EmailConfig;
 import com.tvh.warehouseManager.domein.Warehouse;
 import com.tvh.warehouseManager.repositories.WarehouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,10 @@ public class EmailController {
     
     @Autowired
     private WarehouseRepository warehouseRepository;
+    
+    /*@Autowired
+    private EmailConfig emailConfig;*/
+    
     
     @Scheduled(cron = "0 0 8 * * Mon-Fri")
     public void sendMail() {
