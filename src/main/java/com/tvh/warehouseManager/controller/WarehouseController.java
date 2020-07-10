@@ -5,7 +5,7 @@
  */
 package com.tvh.warehouseManager.controller;
 
-import Config.EmailConfig;
+import com.tvh.warehouseManager.config.EmailConfig;
 import com.tvh.warehouseManager.domein.Warehouse;
 import com.tvh.warehouseManager.repositories.WarehouseRepository;
 import java.util.List;
@@ -25,9 +25,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import service.EmailService;
-import service.WarehouseService;
-import service.WarehouseServiceImpl;
+import com.tvh.warehouseManager.service.EmailService;
+import com.tvh.warehouseManager.service.WarehouseService;
+import com.tvh.warehouseManager.service.WarehouseServiceImpl;
 
 /**
  *

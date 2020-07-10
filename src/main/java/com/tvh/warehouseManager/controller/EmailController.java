@@ -5,7 +5,7 @@
  */
 package com.tvh.warehouseManager.controller;
 
-import Config.EmailConfig;
+import com.tvh.warehouseManager.config.EmailConfig;
 import com.tvh.warehouseManager.domein.Warehouse;
 import com.tvh.warehouseManager.repositories.WarehouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;

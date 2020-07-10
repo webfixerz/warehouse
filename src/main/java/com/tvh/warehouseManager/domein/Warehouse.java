@@ -6,7 +6,7 @@
 package com.tvh.warehouseManager.domein;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import exception.NoCapacityLeftException;
+import com.tvh.warehouseManager.exception.NoCapacityLeftException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;

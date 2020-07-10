@@ -5,8 +5,8 @@
  */
 package com.tvh.warehouseManager.controller;
 
-import exception.ApiError;
-import exception.NoCapacityLeftException;
+import com.tvh.warehouseManager.exception.ApiError;
+import com.tvh.warehouseManager.exception.NoCapacityLeftException;
 import java.util.NoSuchElementException;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpHeaders;

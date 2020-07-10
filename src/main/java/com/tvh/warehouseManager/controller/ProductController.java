@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import service.ProductService;
-import service.ProductServiceImpl;
-import service.WarehouseService;
-import service.WarehouseServiceImpl;
+import com.tvh.warehouseManager.service.ProductService;
+import com.tvh.warehouseManager.service.ProductServiceImpl;
+import com.tvh.warehouseManager.service.WarehouseService;
+import com.tvh.warehouseManager.service.WarehouseServiceImpl;
 
 /**
  *
