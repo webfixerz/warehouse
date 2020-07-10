@@ -9,8 +9,8 @@ package exception;
  *
  * @author simon
  */
-public class DataNotFoundException extends RuntimeException  {
-    public DataNotFoundException(String message) {
+public class NoCapacityLeftException extends RuntimeException  {
+    public NoCapacityLeftException(String message) {
         super(message);
     }
 }

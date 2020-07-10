@@ -84,9 +84,4 @@ public class WarehouseController {
         this.warehouseRepository.deleteById(warehouseId);
     }
     
-    /*@PutMapping(value = "transfer/{idFrom}/{idTo}/{productID}")
-    public void transferProduct(@PathVariable int idFrom, @PathVariable int idTo, @PathVariable int productID) {
-        this.warehouseRepository.transferProduct(idFrom, idTo, productID);
-    }*/ 
-    
 }

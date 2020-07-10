@@ -6,6 +6,7 @@
 package com.tvh.warehouseManager.domein;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import exception.NoCapacityLeftException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -74,7 +75,7 @@ public class Warehouse {
         if(maximumCapacity > this.capacityUsed) {
             this.maximumCapacity = maximumCapacity;
         } else {
-            
+            throw new NoCapacityLeftException("There is no free space in warehouse " + this.getName() + ", so you can't delete capacity");
         }
     }
 
@@ -90,6 +91,8 @@ public class Warehouse {
         if(this.maximumCapacity > this.capacityUsed) {
             this.products.add(p);
             this.capacityUsed++;
+        } else {
+            throw new NoCapacityLeftException("There is no free space in warehouse (" + this.getId() + ") " + this.getName());
         }
     }
     
