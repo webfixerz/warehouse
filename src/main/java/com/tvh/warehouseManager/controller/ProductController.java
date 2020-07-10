@@ -4,11 +4,8 @@ import com.tvh.warehouseManager.domein.Product;
 import com.tvh.warehouseManager.domein.Warehouse;
 import com.tvh.warehouseManager.repositories.ProductRepository;
 import com.tvh.warehouseManager.repositories.WarehouseRepository;
-import java.util.List;
-import java.util.NoSuchElementException;
 import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,13 +14,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.tvh.warehouseManager.service.ProductService;
-import com.tvh.warehouseManager.service.ProductServiceImpl;
-import com.tvh.warehouseManager.service.WarehouseService;
-import com.tvh.warehouseManager.service.WarehouseServiceImpl;
 
 /**
- *
+ * This is a REST-controller that will handle all the requests with warehouses/{warehouseId}/products in the URL.
+ * This controller is focused on the products in a warehouse.
+ * 
  * @author simon
  */
 @RestController
@@ -36,9 +31,17 @@ public class ProductController {
     @Autowired
     public WarehouseService warehouseservice;*/
     
+    /**
+    * The productRepository that will be used for database operations
+    * This attribute will receive a reference to the object by Spring
+    */
     @Autowired
     public ProductRepository productRepository;
     
+    /**
+    * The warehouseRepository that will be used for database operations
+    * This attribute will receive a reference to the object by Spring
+    */
     @Autowired
     public WarehouseRepository warehouseRepository;
     

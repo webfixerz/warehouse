@@ -1,13 +1,29 @@
 package com.tvh.warehouseManager.exception;
 
 /**
+ * Objects of this class can be in a list of ApiError.
  *
  * @author simon
  */
 public class ApiValidationError extends ApiSubError {
+    /**
+    * The object where the validation failed
+    */
     private String object;
+    
+    /**
+    * The field where the validation failed
+    */
     private String field;
+    
+    /**
+    * The value that was going to be assigned
+    */
     private Object rejectedValue;
+    
+    /**
+    * The errormessage of the validation
+    */
     private String message;
 
     ApiValidationError(String object, String message) {

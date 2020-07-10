@@ -4,6 +4,7 @@ import com.tvh.warehouseManager.domein.Product;
 import com.tvh.warehouseManager.domein.Warehouse;
 
 /**
+ * This interface contains all the methodes that can be called by the controller.
  *
  * @author simon
  */

@@ -15,7 +15,8 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 /**
- *
+ * When an error occures, this controller is responsible for sending the error back in a response.
+ * 
  * @author simon
  */
 @ControllerAdvice

@@ -4,17 +4,21 @@ import com.tvh.warehouseManager.domein.Warehouse;
 import com.tvh.warehouseManager.repositories.WarehouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
 
 /**
+ * This service is responsible for collecting the data about the 
+ * warehouses and sending it.
  *
  * @author simon
  */
 //@Service
 public class EmailService {
+    /**
+    * The warehouseRepository that will be used for database operations
+    * This attribute will receive a reference to the object by Spring
+    */
     @Autowired
     private WarehouseRepository warehouseRepository;
     

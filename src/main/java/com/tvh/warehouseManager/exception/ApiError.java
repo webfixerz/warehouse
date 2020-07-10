@@ -6,15 +6,35 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 
 /**
+ * This class is responsible for making errormessages more readible for clients.
  *
  * @author simon
  */
 public class ApiError {
+    /**
+    * The status of the error
+    */
     private HttpStatus status;
+    
+    /**
+    * The timestamp of the error
+    */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private LocalDateTime timestamp;
+    
+    /**
+    * The message of the error
+    */
     private String message;
+    
+    /**
+    * The debugmessage of the error
+    */
     private String debugMessage;
+    
+    /**
+    * A list of other errors that happened
+    */
     private List<ApiSubError> subErrors;
     
     private ApiError() {

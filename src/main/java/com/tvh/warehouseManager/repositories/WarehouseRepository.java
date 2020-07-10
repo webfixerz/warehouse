@@ -1,13 +1,10 @@
 package com.tvh.warehouseManager.repositories;
 
-import com.tvh.warehouseManager.domein.Product;
 import com.tvh.warehouseManager.domein.Warehouse;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Component;
 
 /**
+ * This is the repository that will communicate with the H2 in memory database about warehouses
  *
  * @author simon
  */

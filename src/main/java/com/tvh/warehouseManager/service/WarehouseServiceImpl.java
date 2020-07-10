@@ -2,18 +2,21 @@ package com.tvh.warehouseManager.service;
 
 import com.tvh.warehouseManager.domein.Warehouse;
 import com.tvh.warehouseManager.repositories.WarehouseRepository;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 /**
+ * This class implements the ProductService interface and will be 
+ * used by the controller
  *
  * @author simon
  */
 //@Service
 public class WarehouseServiceImpl implements WarehouseService{
     
+    /**
+    * The warehouseRepository that will be used for database operations
+    * This attribute will receive a reference to the object by Spring
+    */
     @Autowired
     private WarehouseRepository warehouseRepository;
     

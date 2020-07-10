@@ -1,6 +1,5 @@
 package com.tvh.warehouseManager.controller;
 
-import com.tvh.warehouseManager.config.EmailConfig;
 import com.tvh.warehouseManager.domein.Warehouse;
 import com.tvh.warehouseManager.repositories.WarehouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +9,18 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
- *
+ * This is a controller that sends the mail when it's 8 o'clock, every business day.
+ * This controller should be replaced by the EmailService.
+ * 
  * @author simon
  */
 @Component
 public class EmailController {
     
+    /**
+    * The warehouseRepository that will be used for database operations
+    * This attribute will receive a reference to the object by Spring
+    */
     @Autowired
     private WarehouseRepository warehouseRepository;
     
