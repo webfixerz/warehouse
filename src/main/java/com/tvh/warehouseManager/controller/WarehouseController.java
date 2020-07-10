@@ -37,24 +37,44 @@ public class WarehouseController {
     */
     @Autowired
     public WarehouseRepository warehouseRepository;
-    
-    public WarehouseController(){}
-        
+   
+    /**
+    * <p>This method will save a new warehouse</p>
+    * @param warehouse the warehouse object
+    * @since 1.0
+    */
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public void createWarehouse(@RequestBody Warehouse warehouse) {
         this.warehouseRepository.save(warehouse);
     }
     
+    /**
+    * <p>This method will return all the warehouses</p>
+    * @return list of warehouses
+    * @since 1.0
+    */
     @GetMapping
     public Iterable<Warehouse> readWarehouses() {
         return this.warehouseRepository.findAll();
     }
     
+    /**
+    * <p>This method will return the warehouse with corresponding ID</p>
+    * @param warehouseId The ID of the warehouse
+    * @return the warehouse
+    * @since 1.0
+    */
     @GetMapping(value = "{warehouseId}")
     public Warehouse readWarehouse(@PathVariable int warehouseId) {
         return this.warehouseRepository.findById(warehouseId).get();
     }
     
+    /**
+    * <p>This method will update an existing warehouse</p>
+    * @param warehouseId ID of the old warehouse
+    * @param newWarehouse warehouse with new information
+    * @since 1.0
+    */
     @PutMapping(value = "{warehouseId}")
     public void updateWarehouse(@PathVariable int warehouseId, @RequestBody Warehouse newWarehouse) {
         this.warehouseRepository.findById(warehouseId).map(w -> {
@@ -62,9 +82,13 @@ public class WarehouseController {
             w.setMaximumCapacity(newWarehouse.getMaximumCapacity());
             return this.warehouseRepository.save(w);
         });
-        //this.warehouseRepository.updateWarehouse(warehouseId, newWarehouse);
     }
     
+    /**
+    * <p>This method will delete a warehouse</p>
+    * @param warehouseId ID of the warehouse
+    * @since 1.0
+    */
     @DeleteMapping(value = "{warehouseId}")
     public void deleteWarehouse(@PathVariable int warehouseId) {
         this.warehouseRepository.deleteById(warehouseId);

@@ -28,6 +28,11 @@ public class EmailController {
     private EmailConfig emailConfig;*/
     
     
+    /**
+    * <p>This method is scheduled every working day at 8am to send 
+    * an update about the warehouses</p>
+    * @since 1.0
+    */
     @Scheduled(cron = "0 0 8 * * Mon-Fri")
     public void sendMail() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();

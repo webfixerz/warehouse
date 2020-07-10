@@ -40,34 +40,75 @@ public class Product {
     @JsonBackReference
     private Warehouse warehouse;
 
+    /**
+    * <p>This constructor will be used to get data from the database</p>
+    * @since 1.0
+    */
     public Product() {}
     
+    /**
+    * <p>This constructor will be used to make new products</p>
+    * @param id the productID
+    * @param name the name of the product
+    * @param warehouse the warehouse where the product is stored
+    * @since 1.0
+    */
     public Product(int id, String name, Warehouse warehouse) {
         this.id = id;
         this.name = name;
         this.warehouse = warehouse;
     }
 
+    /**
+    * <p>This method will return the warehouse</p>
+    * @return the warehouse
+    * @since 1.0
+    */
     public Warehouse getWarehouse() {
         return warehouse;
     }
 
+    /**
+    * <p>This method will save a new warehouse when the product is transfered</p>
+    * @param warehouse the new warehouse
+    * @since 1.0
+    */
     public void setWarehouse(Warehouse warehouse) {
         this.warehouse = warehouse;
     }
     
+    /**
+    * <p>This method will return the id of the product</p>
+    * @return the id
+    * @since 1.0
+    */
     public int getId() {
         return id;
     }
 
+    /**
+    * <p>This method will set the ID of the product</p>
+    * @param id the new productID
+    * @since 1.0
+    */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+    * <p>This method will return the name of the product</p>
+    * @return the name
+    * @since 1.0
+    */
     public String getName() {
         return name;
     }
 
+    /**
+    * <p>This method will set a new name for the product</p>
+    * @param name the new name of the product
+    * @since 1.0
+    */
     public void setName(String name) {
         if(name != null && name.trim().length() > 3) {
             this.name = name;

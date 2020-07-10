@@ -7,6 +7,12 @@ package com.tvh.warehouseManager.exception;
  * @author simon
  */
 public class NoCapacityLeftException extends RuntimeException  {
+    
+    /**
+    * <p>This constructor will call the RuntimeException constructor</p>
+    * @param message the message of the error
+    * @since 1.0
+    */
     public NoCapacityLeftException(String message) {
         super(message);
     }

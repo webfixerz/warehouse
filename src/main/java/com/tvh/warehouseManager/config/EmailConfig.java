@@ -36,37 +36,39 @@ public class EmailConfig {
     @Value("${spring.mail.password}")
     private String password;
 
+    /**
+    * <p>This method will return the host</p>
+    * @return the host
+    * @since 1.0
+    */
     public String getHost() {
         return host;
     }
 
-    public void setHost(String host) {
-        this.host = host;
-    }
-
+    /**
+    * <p>This method will return the port</p>
+    * @return the port
+    * @since 1.0
+    */
     public int getPort() {
         return port;
     }
 
-    public void setPort(int port) {
-        this.port = port;
-    }
-
+    /**
+    * <p>This method will return the username</p>
+    * @return the username
+    * @since 1.0
+    */
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
+    /**
+    * <p>This method will return the password</p>
+    * @return the password
+    * @since 1.0
+    */
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    
-    
+    }    
 }

@@ -45,10 +45,12 @@ public class ProductController {
     @Autowired
     public WarehouseRepository warehouseRepository;
     
-    public ProductController() {
-        
-    }
-    
+    /**
+    * <p>This method will create a new product</p>
+    * @param warehouseId the ID of the warehouse where the product will be saved
+    * @param product the product that will be saved
+    * @since 1.0
+    */
     @PostMapping
     public void createProduct(@PathVariable("warehouseId") int warehouseId, @RequestBody Product product) {
         this.warehouseRepository.findById(warehouseId).map(warehouse -> {
@@ -62,36 +64,66 @@ public class ProductController {
         });
     }
     
+    /**
+    * <p>This method will return all the products of a warehouse</p>
+    * @param warehouseId The ID of the warehouse
+    * @return the products
+    * @since 1.0
+    */
     @GetMapping()
     public Iterable<Product> readProducts(@PathVariable("warehouseId") int warehouseId) {
         return this.productRepository.findByWarehouseId(warehouseId);
     }
     
+    /**
+    * <p>This method will return a product with corresponding ID</p>
+    * @param productId The ID of the product
+    * @return the prdouct
+    * @since 1.0
+    */
     @GetMapping(value = "/{productId}")
     public Product readProduct(@PathVariable("productId") int productId) {
         Product p;
-        //try {
-            p = this.productRepository.findById(productId).get();
-        //} catch(NoSuchElementException ex) {
-        //    throw new EntityNotFoundException("ProductID " + productId + " was not found!");
-        //}
+        p = this.productRepository.findById(productId).get();
         return p;
     }
     
+    /**
+    * <p>This method will update a product</p>
+    * @param productId The ID of the old product
+    * @param product The new information
+    * @return the new product
+    * @since 1.0
+    */
     @PutMapping(value = "/{productId}")
     public Product updateProduct(@PathVariable("productId") int productId, @RequestBody Product product) {
-        //return this.productRepository.updateProduct(productId, product);
         return this.productRepository.findById(productId).map(p -> {
             p.setName(product.getName());
             return this.productRepository.save(p);
         }).get();
     }
     
+    /**
+    * <p>This method will delete a product and updates the warehouse</p>
+    * @param productId The ID of the product
+    * @param warehouseId The ID of the warehouse where the product will be removed
+    * @since 1.0
+    */
     @DeleteMapping(value = "/{productId}")
-    public void deleteProduct(@PathVariable("productId") int productId) {
-        this.productRepository.deleteById(productId);
+    public void deleteProduct(@PathVariable("productId") int productId, @PathVariable int warehouseId) {
+        Warehouse warehouse = this.warehouseRepository.findById(warehouseId).get();
+        warehouse.deleteProduct(productId);
+        this.warehouseRepository.save(warehouse);
+        this.productRepository.deleteById(productId);        
     }
     
+    /**
+    * <p>This method will transfer a product to another warehouse</p>
+    * @param idFrom ID of the old warehouse
+    * @param idTo ID of the new warehouse
+    * @param productId ID of product
+    * @since 1.0
+    */
     @PutMapping(value = "/transfer/{productId}/{idTo}")
     public void transferProduct(@PathVariable("warehouseId") int idFrom, @PathVariable("idTo") int idTo, @PathVariable("productId") int productId) {
         this.productRepository.findById(productId).map(p -> {
